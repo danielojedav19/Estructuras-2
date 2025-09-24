@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  font-family: 'Montserrat';
+  background-color: #121212; /* Negro */
+  color: #ffffff; /* Blanco */
+  letter-spacing: 0.5px; 
+}
+
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #1e1e2f; /* Negro con morado */
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(128, 0, 128, 0.8);
+  transition: transform 0.2s ease-in-out;
+}
+
+.container:hover {
+  transform: scale(1.01); 
+}
+
+h1, h2 {
+  text-align: center;
+  color: #bb86fc;
+  font-weight: 700; 
+  text-transform: uppercase; 
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+input {
+  padding: 12px;
+  border: 2px solid #bb86fc;
+  border-radius: 6px;
+  outline: none;
+  background: #1e1e2f;
+  color: #ffffff;
+  font-weight: 600;
+  transition: border 0.3s ease;
+}
+
+input:focus {
+  border-color: #ff00ff; 
+}
+
+button {
+  padding: 12px;
+  background: linear-gradient(90deg, #bb86fc, #7b1fa2);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background 0.3s ease, transform 0.2s ease-in-out;
+}
+
+button:hover {
+  background: linear-gradient(90deg, #9b6bdb, #4a148c);
+  transform: scale(1.05); 
+}
+
+.queue-item {
+  padding: 12px;
+  margin: 6px 0;
+  background: #2e2e3f;
+  border-left: 5px solid #bb86fc;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.datetime-input {
+  padding: 12px;
+  border: 2px solid #bb86fc;
+  border-radius: 6px;
+  outline: none;
+  background: #1e1e2f;
+  color: #ffffff;
+  font-weight: 600;
+  transition: border 0.3s ease;
+}
+
+.datetime-input::-webkit-calendar-picker-indicator {
+  filter: invert(1); 
+  cursor: pointer;
+}
+
