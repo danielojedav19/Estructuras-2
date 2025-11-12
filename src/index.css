@@ -1,0 +1,209 @@
+/* === Base === */
+* { box-sizing: border-box; }
+:root { color-scheme: dark; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background-color: #0d1117;
+  color: #f1f1f1;
+  font-family: "Times New Roman", serif;
+}
+
+.page {
+  min-height: 100%;
+  display: block;
+}
+
+/* === Header / navegación (como en CH-14) === */
+.back-btn {
+  background-color: #374151;
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  margin: 16px 8px 0 0;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+.back-btn:hover { background-color: #1f2937; transform: translateY(-1px); }
+
+/* === Cards y contenedores reutilizables === */
+.dashboard-card {
+  background: #161b22;
+  border-radius: 10px;
+  padding: 25px;
+  width: 90%;
+  max-width: 1100px;
+  margin: 16px auto;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+.card-title {
+  color: #58a6ff;
+  font-family: "Georgia", serif;
+  text-align: center;
+  margin: 0 0 12px;
+}
+
+/* Inputs / botones principales */
+input, select {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #30363d;
+  background: #0d1117;
+  color: #f1f1f1;
+  font-size: 15px;
+}
+input:focus, select:focus {
+  outline: none; border-color: #2563eb; box-shadow: 0 0 6px rgba(37,99,235,0.4);
+}
+button {
+  background: #2563eb;
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: "Georgia", serif;
+  font-size: 15px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+button:hover { background: #1d4ed8; transform: translateY(-1px); }
+
+/* === Home === */
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 16px;
+  width: 100%;
+  /* sin flex:1 => no ocupa toda la altura */
+  margin: 40px auto;          /* separa del header y del footer */
+}
+.home-card { max-width: 820px; text-align: center; }
+.home-subtitle { color: #cbd5e1; line-height: 1.6; margin: 6px 0 18px; font-size: 16px; }
+.home-cta {
+  background: #2563eb;
+  border: none;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Georgia", serif;
+  font-size: 16px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.home-cta:hover { background: #1d4ed8; transform: translateY(-1px); }
+.layout-footer {
+  background: #0a0e17;
+  text-align: center;
+  padding: 10px;
+  color: #aaa;
+  font-size: 14px;
+  border-top: 1px solid #1f2937;
+  margin-top: 16px;
+}
+
+.layout-container {
+  display: flex; flex-direction: column; min-height: 100vh;
+}
+
+/* Header grande centrado */
+.layout-header {
+  background: #111827;
+  padding: 28px 20px;
+  text-align: center;
+  color: #58a6ff;
+  font-family: "Georgia", serif;
+  border-bottom: 2px solid #2563eb;
+  font-size: 26px;
+  letter-spacing: .4px;
+  text-shadow: 0 0 10px rgba(37,99,235,.45);
+  font-weight: 700;
+}
+
+/* Botonera debajo del header */
+.nav-container {
+  display: flex;
+  gap: 8px;
+  justify-content: center;     /* cambia a flex-start si los quieres a la izquierda */
+  padding: 10px 16px 0;
+  background: #0d1117;
+}
+
+.layout-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px 16px 32px;
+}
+
+/* Footer ya lo tienes; lo dejo por claridad */
+.layout-footer {
+  background: #0a0e17;
+  text-align: center;
+  padding: 10px;
+  color: #aaa;
+  font-size: 14px;
+  border-top: 1px solid #1f2937;
+}
+
+.home-container { margin: 24px auto; }
+
+/* === Grid lateral usado en /graph === */
+.grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1.3fr .7fr;
+  width: 100%;
+}
+
+/* === Sección Grafo (paralela a “tree-*” del CH-14) === */
+.graph-container { display: flex; flex-direction: column; align-items: center; width: 100%; }
+.graph-card { width: 100%; max-width: 1100px; }
+.graph-viz {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 10px;
+  overflow: auto;
+}
+.graph-wrapper { width: 100%; min-width: 720px; height: 520px; }
+
+/* Etiquetas de react-d3-graph */
+.rd3t-label, .rd3t-label__title, .rd3t-label__attributes { fill: #e5e7eb !important; }
+
+/* Auxiliares */
+.small-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.vstack { display: flex; flex-direction: column; gap: 10px; }
+.sep { height: 1px; background: #30363d; margin: 12px 0; }
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+  .graph-wrapper { min-width: 600px; height: 500px; }
+}
+/* ===== Topbar ===== */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 10px 16px;
+  background: #0d1117;
+  border-bottom: 1px solid #1f2937;
+}
+
+.topbar-left { display: flex; gap: 8px; }
+.topbar-center {
+  justify-self: center;
+  font-weight: 600;
+  color: #cbd5e1;
+  letter-spacing: .2px;
+}
+.topbar-right { justify-self: end; }
