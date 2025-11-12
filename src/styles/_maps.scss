@@ -1,0 +1,8 @@
+@use "./variables" as *;
+
+$badge-colors: (
+  info: $primary,
+  ok:   #10b981,
+  warn: #f59e0b,
+  err:  #ef4444
+);

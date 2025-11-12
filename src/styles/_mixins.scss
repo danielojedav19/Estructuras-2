@@ -1,0 +1,35 @@
+@use "./variables" as *;  
+
+@mixin button($bg, $fg: #fff) {
+  background: $bg;
+  color: $fg;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: $font-serif-alt;
+  font-size: 15px;
+  transition: background .3s ease, transform .2s ease, opacity .2s ease;
+
+  &:hover { opacity: .9; transform: translateY(-2px); }
+}
+
+@mixin focus-ring($color) {
+  border-color: $color;
+  outline: none;
+  box-shadow: 0 0 6px rgba($color, .4);
+}
+
+@mixin card($pad: 25px) {
+  background: $bg-2;
+  border-radius: $radius;
+  padding: $pad;
+  width: 350px;
+  box-shadow: $shadow;
+  transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba($primary, .3);
+  }
+}

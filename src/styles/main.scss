@@ -1,0 +1,194 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+@use "./placeholders";
+@use "./maps";
+@use "sass:color";
+
+/* ===== Estilos base ===== */
+body {
+  background-color: $bg;
+  color: $text;
+  font-family: $font-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* ===== Layout General ===== */
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.layout-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.layout-footer {
+  background: #0a0e17;
+  text-align: center;
+  padding: 10px;
+  color: $muted;
+  font-size: 14px;
+  border-top: 1px solid #1f2937;
+}
+
+/* ===== Header ===== */
+.layout-header {
+  background: $bg-1;
+  padding: 35px 20px;
+  text-align: center;
+  color: $primary-2;
+  font-family: $font-serif-alt;
+  border-bottom: 2px solid $primary;
+  font-size: 28px;
+  letter-spacing: .6px;
+  text-shadow: 0 0 12px rgba($primary, .6);
+  font-weight: bold;
+
+  .header-user {
+    color: color.adjust($primary-2, $lightness: 6%);
+    font-weight: bold;
+    margin-left: 8px;
+    text-shadow: 0 0 8px rgba($primary, .4);
+  }
+}
+
+/* ===== Botón de logout debajo del header ===== */
+.logout-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 30px;
+  background-color: $bg;
+
+  .logout-btn {
+    @include button($danger);
+    &:hover { background: $danger-2; transform: translateY(-2px); }
+  }
+}
+
+/* ===== Tarjetas y formularios ===== */
+.card { @include card(25px); }
+
+.card h2 {
+  text-align: center;
+  font-family: $font-serif-alt;
+  color: $primary-2;
+  margin-bottom: 16px;
+}
+
+/* Inputs */
+input, textarea {
+  display: block;
+  width: 100%;
+  margin: 6px 0;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid $line;
+  background: $bg;
+  color: white;
+  font-size: 15px;
+
+  &:focus { @include focus-ring($primary); }
+}
+
+/* Botones */
+button { @include button($primary); }
+button.google { @include button($google); }
+button.logout { @include button($danger); }
+
+/* Enlaces */
+a {
+  color: $primary-2;
+  text-decoration: none;
+  font-size: 14px;
+  &:hover { text-decoration: underline; }
+}
+
+/* Errores */
+.error {
+  color: $danger;
+  font-size: 14px;
+  margin-top: 8px;
+  text-align: center;
+}
+
+/* ===== AUTH: centrado real y botones full width ===== */
+.auth-center {
+  width: 100%;
+  min-height: calc(100vh - 120px); // espacio aprox de header+footer
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+.card--auth {
+  width: min(420px, 92vw);
+}
+
+.card form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  button {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.card > .google {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* ===== Dashboard ===== */
+.dashboard-wrap {
+  width: 100%;
+  padding: 24px 16px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* ===== Listado de usuarios (si lo usas) ===== */
+.users-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.user-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $bg-2;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid $line;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1100px) {
+  .dashboard-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 720px) {
+  .dashboard-grid { grid-template-columns: 1fr; }
+  .layout-header { padding: 25px 10px; font-size: 22px; }
+  .card { width: 90%; }
+}
+.badge { @extend %pill; background: rgba(255,255,255,.06); color: $text; }
+@each $name, $color in maps.$badge-colors {
+  .badge--#{$name} { background: rgba($color,.15); color: $color; }
+}

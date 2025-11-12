@@ -1,0 +1,13 @@
+@use "../styles/variables" as *;
+
+.wrapper { background: $bg-2; border: 1px solid rgba(255,255,255,.06); border-radius: 10px; padding: 16px; }
+.header  { display: flex; align-items: center; justify-content: space-between; margin-bottom: .5rem; }
+.title   { font-weight: 800; color: $primary-2; }
+/* .counter ya no compone, solo aplica spacing local */
+.counter { margin-left: .5rem; }
+
+.list  { list-style: none; padding: 0; margin: .75rem 0 0; }
+.item  { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); border-radius: 8px; padding: 10px; margin-bottom: 10px; }
+.name  { color: $primary-2; font-weight: 700; }
+.time  { color: $muted; font-size: .85rem; }
+.unread{ background: rgba($primary,.08); }
